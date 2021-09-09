@@ -105,7 +105,7 @@ class Home extends Component {
                 </div>
                 <Divider style={{height:'2px',width:'80%',margin:'10px',backgroundColor:'white',marginTop:'30px'}}/>
                 <div style={{margin:'10px',fontWeight:'bolder',fontSize:'18px'}}>
-                <Button variant="contained" href="/AboutUs" style={{
+                <Button variant="contained" href="/Algorithm-Visualizer/about-us" style={{
                                                 borderRadius: 35,
                                                 backgroundColor: "#00182E",
                                                 padding: "18px 36px",
