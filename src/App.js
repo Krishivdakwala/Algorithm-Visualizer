@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {createStore} from 'redux';
 import reducers from './Redux Store/reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import AboutUs from './Components/AboutUs';
 
 import Home from './Components/Home';
 import BubbleSort from './Components/BubbleSort';
@@ -20,6 +21,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/bubble-sort" component={BubbleSort}></Route>
+            <Route exact path="/AboutUs" component={AboutUs}></Route>
           </Switch>
         </Router>
       </Provider>

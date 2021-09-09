@@ -1,7 +1,8 @@
-import { Divider } from '@material-ui/core';
+import { Divider, Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { motion } from 'framer-motion';
+
 
 class Home extends Component {
 
@@ -103,6 +104,15 @@ class Home extends Component {
                 }
                 </div>
                 <Divider style={{height:'2px',width:'80%',margin:'10px',backgroundColor:'white',marginTop:'30px'}}/>
+                <div style={{margin:'10px',fontWeight:'bolder',fontSize:'18px'}}>
+                <Button variant="contained" href="/AboutUs" style={{
+                                                borderRadius: 35,
+                                                backgroundColor: "#00182E",
+                                                padding: "18px 36px",
+                                                fontSize: "18px",
+                                                color: "#ffff"
+                                            }}>About Us</Button>
+                </div>
             </div>
         );
     }
