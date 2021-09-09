@@ -76,7 +76,7 @@ export default function AboutUs(props) {
                     <ImgCard
                         name = "Atharva Dere"
                         img = "./images/KrishivDakwala"
-                        
+                        link1 = "https://www.linkedin.com/in/atharva-dere-2b448a196/"
                         link2 = "https://github.com/Atharva1810"
                     ></ImgCard>
                     <ImgCard
