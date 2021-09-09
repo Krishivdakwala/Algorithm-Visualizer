@@ -24,7 +24,7 @@ function App() {
             <Route exact path="/Algorithm-Visualizer/selection-sort" component={BubbleSort}></Route>
             <Route exact path="/Algorithm-Visualizer/insertion-sort" component={BubbleSort}></Route>
             <Route exact path="/Algorithm-Visualizer/merge-sort" component={BubbleSort}></Route>
-            <Route exact path="/Algorithm-Visualizer/AboutUs" component={AboutUs}></Route>
+            <Route exact path="/AboutUs" component={AboutUs}></Route>
           </Switch>
         </Router>
       </Provider>

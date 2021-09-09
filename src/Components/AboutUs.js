@@ -63,25 +63,24 @@ export default function AboutUs(props) {
                     <ImgCard
                         name = "Piyush Deore"
                         img = "./images/KrishivDakwala"
-                        link1 = "https://www.linkedin.com/in/krishiv-dakwala/"
-                        link2 = "https://github.com/Krishivdakwala"
+                        
                     ></ImgCard>
                     <ImgCard
                         name = "Pranav Chougule"
                         img = "./images/KrishivDakwala"
-                        link1 = "https://www.linkedin.com/in/krishiv-dakwala/"
+                        link1 = "https://www.linkedin.com/in/pranav-chougule-39410119b/"
                         link2 = "https://github.com/Pranavpc39"
                     ></ImgCard>
                     <ImgCard
                         name = "Atharva Dere"
                         img = "./images/KrishivDakwala"
-                        link1 = "https://www.linkedin.com/in/krishiv-dakwala/"
+                        
                         link2 = "https://github.com/Atharva1810"
                     ></ImgCard>
                     <ImgCard
                         name = "Swapnil Chhatre"
                         img = "./images/KrishivDakwala"
-                        link1 = "https://www.linkedin.com/in/krishiv-dakwala/"
+                        link1 = "https://www.linkedin.com/in/swapnil-chhatre-221159162/"
                         link2 = "https://github.com/cpt-Levi"
                     ></ImgCard>
                     
