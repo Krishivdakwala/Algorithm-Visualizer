@@ -1,5 +1,5 @@
 # Algorithm Visualizer
-
+![alt text](https://github.com/Krishivdakwala/Algorithm-Visualizer/blob/main/images/ss2.png)
 
 ## Available Scripts
 
