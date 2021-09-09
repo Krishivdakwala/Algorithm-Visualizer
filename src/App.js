@@ -19,12 +19,12 @@ function App() {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/bubble-sort" component={BubbleSort}></Route>
-            <Route exact path="/selection-sort" component={BubbleSort}></Route>
-            <Route exact path="/insertion-sort" component={BubbleSort}></Route>
-            <Route exact path="/merge-sort" component={BubbleSort}></Route>
-            <Route exact path="/AboutUs" component={AboutUs}></Route>
+            <Route exact path="/Algorithm-Visualizer" component={Home}></Route>
+            <Route exact path="/Algorithm-Visualizer/bubble-sort" component={BubbleSort}></Route>
+            <Route exact path="/Algorithm-Visualizer/selection-sort" component={BubbleSort}></Route>
+            <Route exact path="/Algorithm-Visualizer/insertion-sort" component={BubbleSort}></Route>
+            <Route exact path="/Algorithm-Visualizer/merge-sort" component={BubbleSort}></Route>
+            <Route exact path="/Algorithm-Visualizer/AboutUs" component={AboutUs}></Route>
           </Switch>
         </Router>
       </Provider>
