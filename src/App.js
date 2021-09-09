@@ -21,6 +21,9 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/bubble-sort" component={BubbleSort}></Route>
+            <Route exact path="/selection-sort" component={BubbleSort}></Route>
+            <Route exact path="/insertion-sort" component={BubbleSort}></Route>
+            <Route exact path="/merge-sort" component={BubbleSort}></Route>
             <Route exact path="/AboutUs" component={AboutUs}></Route>
           </Switch>
         </Router>

@@ -18,17 +18,17 @@ class Home extends Component {
                 {
                     title:"Selection Sort",
                     theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
-                    path:"bubble-sort",
+                    path:"selection-sort",
                 },
                 {
                     title:"Insertion Sort",
                     theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
-                    path:"bubble-sort",
+                    path:"insertion-sort",
                 },
                 {
                     title:"Merge Sort",
                     theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
-                    path:"bubble-sort",
+                    path:"merge-sort",
                 },
             ],
             
