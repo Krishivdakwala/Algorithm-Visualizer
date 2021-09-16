@@ -182,7 +182,6 @@ class BinarySearch extends Component {
 
     stopAnimation = ()=>{
         this.setState({stop:true});
-        window.location.reload();
     }
 
     disableInput = ()=>{
@@ -273,7 +272,7 @@ class BinarySearch extends Component {
                                     }}
                                 label="Search" disabled={this.state.disabled} placeholder={this.state.search.toString()} onChange={(e) => { this.setState({search: e.target.value}) }}/>  
                     <Button onClick={() => {this.startAnimation(); this.disableInput()}} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Start</Button>
-                    <Button onClick={() => {this.stopAnimation(); this.enableInput()}} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Stop</Button>
+                    <Button onClick={this.stopAnimation} style={{width:'200px', margin:'20px'}} href="/Algorithm-Visualizer/binary-search" color="secondary" variant="contained">Stop</Button>
                 </div>
                 
                 <Divider style={{height:'2px',width:'100%',margin:'10px',backgroundColor:'white'}}/>

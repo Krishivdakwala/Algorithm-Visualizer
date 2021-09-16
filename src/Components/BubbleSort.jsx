@@ -151,7 +151,6 @@ class BubbleSort extends Component {
 
     stopAnimation = ()=>{
         this.setState({stop:true});
-        window.location.reload();
     }
     
     render() {
@@ -221,7 +220,7 @@ class BubbleSort extends Component {
                 </div>
                 <div style={{display:'flex'}}>
                     <Button onClick={this.startAnimation} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Start</Button>
-                    <Button onClick={this.stopAnimation} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Stop</Button>
+                    <Button onClick={this.stopAnimation} style={{width:'200px', margin:'20px'}} href="/Algorithm-Visualizer/bubble-sort" color="secondary" variant="contained">Stop</Button>
                 </div>
                 
                 <Divider style={{height:'2px',width:'100%',margin:'10px',backgroundColor:'white'}}/>
