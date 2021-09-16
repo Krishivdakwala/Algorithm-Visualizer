@@ -32,7 +32,7 @@ const MySlider = withStyles({
     },
   ];
 
-class BubbleSort extends Component {
+class MergeSort extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -230,4 +230,4 @@ class BubbleSort extends Component {
     }
 }
 
-export default BubbleSort;
+export default MergeSort;

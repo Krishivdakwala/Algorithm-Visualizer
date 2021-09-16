@@ -6,6 +6,8 @@ import _ from 'lodash';
 import { motion } from 'framer-motion';
 import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 
 
 const MySlider = withStyles({
@@ -32,7 +34,8 @@ const MySlider = withStyles({
     },
   ];
 
-class BubbleSort extends Component {
+class BinarySearch extends Component {
+    
     constructor(props) {
         super(props);
         this.state={
@@ -41,6 +44,8 @@ class BubbleSort extends Component {
             width:30,
             stop:true,
             speed:1,
+            search: 0,
+            disabled: false
         }
 
         
@@ -80,14 +85,23 @@ class BubbleSort extends Component {
         this.setState({speed:val});
     }
 
+    numberSort = function(a, b) { return a - b; };
+
     generateNewArray=()=>{
         this.changeWidth();
         let arr = [];
+        let randNum = [];
         let min = 1,max = 500;
         for(let i=0;i<this.state.arraySize;i++){
             let rand = min + Math.random() * (max - min);
-            arr = [...arr,{val:Math.floor(rand),x:0,index:i,color:'#00FFFF'}];
+            randNum.push(Math.floor(rand));
+            randNum.sort(this.numberSort);
         }
+
+        for(let i=0; i<randNum.length;i++){
+            arr = [...arr,{val:Math.floor(randNum[i]),x:0,index:i,color:'#00FFFF'}];
+        }
+        
         this.setState({arr});
     }
 
@@ -106,52 +120,77 @@ class BubbleSort extends Component {
         let flag = false;
 
         if(this.state.speed===1){
-            outerms=500;
-            innerms=1000;
+            outerms=1000;
+            innerms=3000;
         }
         else if(this.state.speed===2){
-            outerms=200;
-            innerms=500;
+            outerms=400;
+            innerms=1500;
         }
         else{
-            outerms=10;
-            innerms=10;
+            outerms=20;
+            innerms=30;
+        }
+
+        let l = 0;
+        let u = temp_arr.length - 1;
+        let prev_m = -1;
+        while(l <= u){
+            let m = l + Math.floor((u - l) / 2);            
+            arr[temp_arr[m].index].color = '#303F9F';
+            this.setState({arr});
+            await sleep(innerms);
+            prev_m = m;
+            if (temp_arr[m].val == this.state.search){
+                
+                arr[temp_arr[m].index].color = '#ff0000'
+                for(let z = 0; z < temp_arr.length; z++){
+                    if(z != m){
+                        arr[temp_arr[z].index].color = '#00FFFF';
+                    }
+                }
+                this.enableInput();
+                this.setState({arr});
+
+                break;
+            }
+
+            else if(temp_arr[m].val < this.state.search){
+                l = m + 1;
+                for(let z = 0; z < m + 1; z++){
+                    arr[temp_arr[z].index].color = '#282c34';
+                    this.setState({arr});
+                }
+                await sleep(outerms);
+
+            }
+            else{
+                u = m - 1;
+                for(let z = m; z < temp_arr.length; z++){
+                    arr[temp_arr[z].index].color = '#282c34';
+                    this.setState({arr});
+                }
+                await sleep(outerms);
+            }
+            setTimeout(() => {
+                    
+                this.setState({arr});
+            }, innerms);
         }
         
-        for(let i=0;i<n-1;i++){
-            await sleep(outerms);
-            for(let j=0;j<n-i-1;j++){
-                await sleep(innerms);
-                arr[temp_arr[j].index].color = '#303F9F';
-                arr[temp_arr[j+1].index].color = '#303F9F';
-                this.setState({arr});
-                if(temp_arr[j].val > temp_arr[j+1].val){
-                    let temp_obj = temp_arr[j];
-                    temp_arr[j] = temp_arr[j+1];
-                    temp_arr[j+1] = temp_obj;
-
-
-                    arr[temp_arr[j].index].x -= (width+10);
-                    arr[temp_arr[j+1].index].x += (width+10);                                     
-
-                    
-                }
-                console.log('arr',arr)
-                
-                arr[temp_arr[j].index].color = '#00FFFF';
-                arr[temp_arr[j+1].index].color = '#00FFFF';
-                setTimeout(() => {
-                    
-                    this.setState({arr});
-                }, innerms);
-  
-            }
-        }
     }
 
     stopAnimation = ()=>{
         this.setState({stop:true});
         window.location.reload();
+    }
+
+    disableInput = ()=>{
+        this.setState({disabled:true});
+    }
+
+    enableInput = ()=>{
+        this.setState({disabled:false});
     }
     
     render() {
@@ -219,9 +258,22 @@ class BubbleSort extends Component {
                         ))
                     }
                 </div>
+                
                 <div style={{display:'flex'}}>
-                    <Button onClick={this.startAnimation} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Start</Button>
-                    <Button onClick={this.stopAnimation} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Stop</Button>
+                    
+                    <TextField id="standard-basic" 
+                                InputProps={{
+                                        style: {
+                                            background: 'rgb(232, 241, 250)',
+                                            width: '90%',
+                                            paddingBottom: 0,
+                                            marginTop: 25,
+                                            fontWeight: 500,
+                                        }
+                                    }}
+                                label="Search" disabled={this.state.disabled} placeholder={this.state.search.toString()} onChange={(e) => { this.setState({search: e.target.value}) }}/>  
+                    <Button onClick={() => {this.startAnimation(); this.disableInput()}} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Start</Button>
+                    <Button onClick={() => {this.stopAnimation(); this.enableInput()}} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Stop</Button>
                 </div>
                 
                 <Divider style={{height:'2px',width:'100%',margin:'10px',backgroundColor:'white'}}/>
@@ -230,4 +282,4 @@ class BubbleSort extends Component {
     }
 }
 
-export default BubbleSort;
+export default BinarySearch;

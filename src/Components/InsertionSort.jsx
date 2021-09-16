@@ -32,7 +32,7 @@ const MySlider = withStyles({
     },
   ];
 
-class BubbleSort extends Component {
+class InsertionSort extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -117,36 +117,58 @@ class BubbleSort extends Component {
             outerms=10;
             innerms=10;
         }
-        
-        for(let i=0;i<n-1;i++){
+        // ================================================================
+
+        for(let i=1;i<n;i++){
             await sleep(outerms);
-            for(let j=0;j<n-i-1;j++){
+            let key = temp_arr[i].val;
+            let j = i - 1;
+
+            arr[temp_arr[i-1].index].color = '#303F9F';
+            arr[temp_arr[i].index].color = '#ff0000';
+            this.setState({arr});
+            while(j >=0 && temp_arr[j].val > key){
                 await sleep(innerms);
-                arr[temp_arr[j].index].color = '#303F9F';
-                arr[temp_arr[j+1].index].color = '#303F9F';
-                this.setState({arr});
-                if(temp_arr[j].val > temp_arr[j+1].val){
-                    let temp_obj = temp_arr[j];
-                    temp_arr[j] = temp_arr[j+1];
-                    temp_arr[j+1] = temp_obj;
-
-
-                    arr[temp_arr[j].index].x -= (width+10);
-                    arr[temp_arr[j+1].index].x += (width+10);                                     
-
-                    
+                if(j <= i - 2){
+                    arr[temp_arr[j + 1].index].color = '#00FFFF';
+                    arr[temp_arr[j].index].color = '#303F9F';
+                    this.setState({arr});
+                    j = j - 1;
                 }
-                console.log('arr',arr)
-                
-                arr[temp_arr[j].index].color = '#00FFFF';
-                arr[temp_arr[j+1].index].color = '#00FFFF';
+                else{
+                    arr[temp_arr[j].index].color = '#303F9F';
+                    this.setState({arr});
+                    j = j - 1;
+                }  
+
                 setTimeout(() => {
                     
                     this.setState({arr});
                 }, innerms);
-  
             }
+
+            let z = i;
+            while(temp_arr[z] < temp_arr[z - 1]){
+                
+
+                let temp_obj = temp_arr[z - 1];
+                temp_arr[z - 1] = temp_arr[z];
+                temp_arr[z] = temp_obj;
+
+                arr[temp_arr[z].index].x += (width+10);
+                arr[temp_arr[z - 1].index].x -= (width+10);
+                
+                z = z - 1;
+                setTimeout(() => {
+                    
+                    this.setState({arr});
+                }, innerms);
+            }
+
+            
+        
         }
+        // ================================================================
     }
 
     stopAnimation = ()=>{
@@ -230,4 +252,4 @@ class BubbleSort extends Component {
     }
 }
 
-export default BubbleSort;
+export default InsertionSort;

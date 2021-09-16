@@ -32,7 +32,7 @@ const MySlider = withStyles({
     },
   ];
 
-class BubbleSort extends Component {
+class SelectionSort extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -120,33 +120,74 @@ class BubbleSort extends Component {
         
         for(let i=0;i<n-1;i++){
             await sleep(outerms);
-            for(let j=0;j<n-i-1;j++){
+            arr[temp_arr[i].index].color = '#303F9F';
+            let min_val = temp_arr[i].val;
+            let prev_min = i+1;
+            let flag = 0;
+            let dist = width;
+            for(let j=i+1;j<n;j++){
                 await sleep(innerms);
+                
                 arr[temp_arr[j].index].color = '#303F9F';
-                arr[temp_arr[j+1].index].color = '#303F9F';
                 this.setState({arr});
-                if(temp_arr[j].val > temp_arr[j+1].val){
-                    let temp_obj = temp_arr[j];
-                    temp_arr[j] = temp_arr[j+1];
-                    temp_arr[j+1] = temp_obj;
-
-
-                    arr[temp_arr[j].index].x -= (width+10);
-                    arr[temp_arr[j+1].index].x += (width+10);                                     
-
-                    
+                if(temp_arr[j].val < min_val){
+                    min_val = temp_arr[j].val;    
+                    arr[temp_arr[j].index].color = '#ff0000';
+                    arr[temp_arr[prev_min].index].color = '#00FFFF';
+                    prev_min = j;    
+                    dist = (j - i )*(width + 10);
+                    flag = 1;
                 }
+
                 console.log('arr',arr)
                 
-                arr[temp_arr[j].index].color = '#00FFFF';
-                arr[temp_arr[j+1].index].color = '#00FFFF';
+                if(j < n-1){
+                    if(temp_arr[j].val != min_val){
+                        arr[temp_arr[j].index].color = '#00FFFF';
+                        arr[temp_arr[j+1].index].color = '#00FFFF';
+                    }
+                    else{
+                        arr[temp_arr[j].index].color = '#ff0000';
+                        arr[temp_arr[j+1].index].color = '#00FFFF';
+                    }
+                }
+                else{
+                    if(temp_arr[j].val != min_val){
+                        arr[temp_arr[j].index].color = '#00FFFF';
+                    }
+                    else{
+                        arr[temp_arr[j].index].color = '#ff0000';
+                    }
+                }
+                
+                
                 setTimeout(() => {
                     
                     this.setState({arr});
                 }, innerms);
   
             }
+            
+            if(flag == 1){
+                arr[temp_arr[prev_min].index].color = '#00FFFF';
+                arr[temp_arr[i].index].color = '#00FFFF'
+                let temp_obj = temp_arr[prev_min];
+                temp_arr[prev_min] = temp_arr[i];
+                temp_arr[i] = temp_obj;
+
+
+                arr[temp_arr[prev_min].index].x += (dist);
+                arr[temp_arr[i].index].x -= (dist);     
+                
+                
+            }
+            else{
+                arr[temp_arr[i].index].color = '#00FFFF';
+            }
+
+              
         }
+       
     }
 
     stopAnimation = ()=>{
@@ -230,4 +271,4 @@ class BubbleSort extends Component {
     }
 }
 
-export default BubbleSort;
+export default SelectionSort;

@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { motion } from 'framer-motion';
 import {Link} from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 
 const MySlider = withStyles({
@@ -32,7 +33,8 @@ const MySlider = withStyles({
     },
   ];
 
-class BubbleSort extends Component {
+class LinearSearch extends Component {
+    
     constructor(props) {
         super(props);
         this.state={
@@ -41,6 +43,7 @@ class BubbleSort extends Component {
             width:30,
             stop:true,
             speed:1,
+            search: 0,
         }
 
         
@@ -118,40 +121,41 @@ class BubbleSort extends Component {
             innerms=10;
         }
         
-        for(let i=0;i<n-1;i++){
-            await sleep(outerms);
-            for(let j=0;j<n-i-1;j++){
-                await sleep(innerms);
-                arr[temp_arr[j].index].color = '#303F9F';
-                arr[temp_arr[j+1].index].color = '#303F9F';
+        for(let i=0;i<n;i++){
+            arr[temp_arr[i].index].color = '#303F9F'
+            await sleep(innerms);
+            this.setState({arr});
+
+            if(temp_arr[i].val == this.state.search){
+                arr[temp_arr[i].index].color = '#ff0000'
                 this.setState({arr});
-                if(temp_arr[j].val > temp_arr[j+1].val){
-                    let temp_obj = temp_arr[j];
-                    temp_arr[j] = temp_arr[j+1];
-                    temp_arr[j+1] = temp_obj;
-
-
-                    arr[temp_arr[j].index].x -= (width+10);
-                    arr[temp_arr[j+1].index].x += (width+10);                                     
-
-                    
-                }
-                console.log('arr',arr)
-                
-                arr[temp_arr[j].index].color = '#00FFFF';
-                arr[temp_arr[j+1].index].color = '#00FFFF';
-                setTimeout(() => {
-                    
-                    this.setState({arr});
-                }, innerms);
-  
+                break;
             }
+
+            else{
+                arr[temp_arr[i].index].color = '#00FFFF'
+            }
+
+            setTimeout(() => {
+                    
+                this.setState({arr});
+            }, innerms);
+
+            
         }
     }
 
     stopAnimation = ()=>{
         this.setState({stop:true});
         window.location.reload();
+    }
+
+    disableInput = ()=>{
+        this.setState({disabled:true});
+    }
+
+    enableInput = ()=>{
+        this.setState({disabled:false});
     }
     
     render() {
@@ -220,8 +224,19 @@ class BubbleSort extends Component {
                     }
                 </div>
                 <div style={{display:'flex'}}>
-                    <Button onClick={this.startAnimation} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Start</Button>
-                    <Button onClick={this.stopAnimation} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Stop</Button>
+                    <TextField id="standard-basic" 
+                                InputProps={{
+                                        style: {
+                                            background: 'rgb(232, 241, 250)',
+                                            width: '90%',
+                                            paddingBottom: 0,
+                                            marginTop: 25,
+                                            fontWeight: 500,
+                                        }
+                                    }}
+                                label="Search" disabled={this.state.disabled} placeholder={this.state.search.toString()} onChange={(e) => { this.setState({search: e.target.value}) }}/>  
+                    <Button onClick={() => {this.startAnimation(); this.disableInput()}} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Start</Button>
+                    <Button onClick={() => {this.stopAnimation(); this.enableInput()}} style={{width:'200px', margin:'20px'}} color="secondary" variant="contained">Stop</Button>
                 </div>
                 
                 <Divider style={{height:'2px',width:'100%',margin:'10px',backgroundColor:'white'}}/>
@@ -230,4 +245,4 @@ class BubbleSort extends Component {
     }
 }
 
-export default BubbleSort;
+export default LinearSearch;
