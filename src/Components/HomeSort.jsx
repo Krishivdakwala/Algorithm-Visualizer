@@ -18,13 +18,13 @@ class HomeSort extends Component {
                 },
                 {
                     title:"Selection Sort",
-                    theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
+                    theory:"The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from ......",
                     path:"/Algorithm-Visualizer/selection-sort",
                     path2:"/Algorithm-Visualizer/selection-sort-info"
                 },
                 {
                     title:"Insertion Sort",
-                    theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
+                    theory:"Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array ....",
                     path:"/Algorithm-Visualizer/insertion-sort",
                     path2:"/Algorithm-Visualizer/insertion-sort-info"
                 },

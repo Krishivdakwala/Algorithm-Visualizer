@@ -12,13 +12,13 @@ class HomeSearch extends Component {
             sorting_algo:[
                 {
                     title:"Linear Search",
-                    theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
+                    theory:"Linear search is a very simple search algorithm. In this type of search, a sequential search is made over all items one by one.",
                     path:"/Algorithm-Visualizer/linear-search",
                     path2:"/Algorithm-Visualizer/linear-search-info"
                 },
                 {
                     title:"Binary Search",
-                    theory:"Bubble sort, sometimes referred to as sinking sort, is a simple sorting algorithm that repeatedly steps through the list,  ....",
+                    theory:"In binary search we search a sorted array by repeatedly dividing the search interval in half. Begin with an interval  ...",
                     path:"/Algorithm-Visualizer/binary-search",
                     path2:"/Algorithm-Visualizer/binary-search-info"
                 },
